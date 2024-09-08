@@ -8,34 +8,34 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name = "drive")
 public class drive extends OpMode {
 
-    DcMotor leftfront, rightfront;
-    DcMotor leftback, rightback;
+    DcMotor frontleft, frontright;
+    DcMotor backleft, backright;
 
-    Servo claw;
+    Servo Claw;
 
     @Override
     public void init() {
-        leftfront = hardwareMap.get(DcMotor.class, "leftfront");
-        leftback = hardwareMap.get(DcMotor.class, "leftback");
-        rightfront = hardwareMap.get(DcMotor.class, "rightfront");
-        rightback = hardwareMap.get(DcMotor.class, "rightback");
+        frontleft = hardwareMap.get(DcMotor.class, "frontleft");
+        backleft = hardwareMap.get(DcMotor.class, "backleft");
+        frontright = hardwareMap.get(DcMotor.class, "frontright");
+        backright = hardwareMap.get(DcMotor.class, "backright");
 
-        claw = hardwareMap.get(Servo.class, "claw");
+        Claw = hardwareMap.get(Servo.class, "Claw");
 
     }
 
     @Override
     public void loop() {
-        leftfront.setPower(gamepad1.left_stick_y);
-        leftback.setPower(gamepad1.left_stick_y);
-        rightfront.setPower(gamepad1.right_stick_y);
-        rightback.setPower(gamepad1.right_stick_y);
+        frontleft.setPower(gamepad1.left_stick_y);
+        backleft.setPower(gamepad1.left_stick_y);
+        frontright.setPower(gamepad1.right_stick_y);
+        backright.setPower(gamepad1.right_stick_y);
 
         if (gamepad1.a){
-            claw.setPosition(1);
+            Claw.setPosition(1);
         }
         else{
-            claw.setPosition(0.5);        }
+            Claw.setPosition(0.5);        }
 
 
     }
